@@ -1,0 +1,11 @@
+{
+  "name": "minutes.nz",
+  "version": "0.0.0",
+  "description": "Minutes.nz-proto",
+  "main": "server.js",
+  "author": "Dave",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC"
+}

@@ -1,0 +1,254 @@
+﻿<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        
+        <title>minutes.nz</title>
+
+        <meta name="description" content="Professional meeting minutes in seconds!">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/styles.css" />
+        <!--<script src="js/vendor/modernizr-2.8.3.min.js"></script>-->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header>
+            <i class="logo"></i>
+            <h1>minutes.nz</h1>
+            <h2>Professional meeting minutes in seconds!</h2>
+        </header>
+        
+        <section class="page">
+            <article>
+                <label>What is the name of your organisation?</label>
+                <input class="input" type="text" autofocus value="Sokitt" />
+            </article>
+            
+            <article>
+                <label>When and where did you meet?</label>
+                on <input class="input short default-date-now" type="text" placeholder="dd/mm/yy" />
+                location <input class="input" type="text" value="BNZ" />
+            </article>
+
+            <article>
+                <label>Who attended?</label> list names
+                <input class="input names" type="text" value="Dave, Jenine, Ben, Sean" />
+            </article>
+
+            <article>
+                <label>Were there any apologies?</label> list names
+                <input class="input names" type="text" value="Craig, Mack" />
+                <div class="motion">
+                    <div class="mover">moved by <input class="input names" type="text" value="Ben" /></div>
+                    <div class="seconder">seconded by <input class="input names" type="text" value="Jenine" /></div>
+                </div>
+            </article>
+
+            <article>
+                <label>When was the previous meeting?</label>
+                on <input class="input short" type="text" placeholder="dd/mm/yy" />
+            </article>
+
+            <article>
+                <label>Are the minutes of the previous meeting are a true and correct record?</label>
+                <div class="motion">
+                    <div class="mover">moved by <input class="input names" type="text" value="Ben" /></div>
+                    <div class="seconder">seconded by <input class="input names" type="text" value="Jenine" /></div>
+                </div>
+                 
+                <div class="chooser-container">
+                    if the motion was not passed, describe the reason
+                    <div class="chooser">
+                        or <button class="btn-chooser">choose one</button>
+                        <select class="select-chooser">
+                            <option selected></option>
+                            <option>This motion was not passed as corrections are required to the previous minutes</option>
+                            <option>This motion was not passed as </option>
+                        </select>
+                    </div>
+                    <textarea class="textarea"></textarea>
+                </div>
+            </article>
+
+            <article>
+                <label>Were there any matters arising from the previous minutes?</label>
+                describe what was discussed <textarea class="textarea"></textarea>
+                list any decisions made
+                <textarea class="textarea"></textarea>
+            </article>
+
+            <article>
+                <label>Is there any correspondence to record?</label>
+                list any correspondence <textarea id="correspondence" class="textarea"></textarea>
+            </article>
+
+            <div id="correspondence-motion">
+                <label>Who moved that the correspondence be accepted?</label>
+                <div class="motion">
+                    <div class="mover">moved by <input class="input names" type="text" value="" /></div>
+                    <div class="seconder">seconded by <input class="input names" type="text" value="" /></div>
+                </div>
+
+                <div class="chooser-container">
+                    if the motion was not passed, describe the reason
+                    <div class="chooser">
+                        or <button class="btn-chooser">choose one</button>
+                        <select class="select-chooser">
+                            <option selected></option>
+                            <option>This motion was not passed as </option>
+                        </select>
+                    </div>
+                    <textarea class="textarea"></textarea>
+                </div>
+            </div>
+
+            <article>
+                <label>Was a Financial Report presented to the meeting?</label>
+                
+                <div class="motion">
+                    <div class="mover">financial report was presented by <input id="financial-report-mover" class="input names" type="text" value="" /></div>
+                    <div class="seconder">seconded by <input class="input names" type="text" value="" /></div>
+                </div>
+
+                <div id="financial-report-dependency">
+                    list any payments that require approval
+                    <textarea class="textarea"></textarea>
+
+                    were the payments listed approved and the report accepted?
+                    <div class="yesno">
+                        <button class="btn-yes selected">yes</button>
+                        <button class="btn-no">no</button>
+                    </div>
+                </div>
+            </article>
+
+            <article>
+                <label>Describe any other reports presented to the meeting</label>
+                for example your president may have a report to be tabled<br />
+                <textarea id="other-report" class="textarea"></textarea>
+
+                <div id="other-report-dependency">
+                    who moved that this report is accepted
+                    <div class="motion">
+                        <div class="mover">mover <input id="other-report-mover" class="input names" type="text" value="" /></div>
+                        <div class="seconder">seconded by <input class="input names" type="text" value="" /></div>
+                    </div>
+
+                    was this report accepted?
+                    <!--<input type="checkbox" class="checkbox" />-->
+                    <div class="yesno">
+                        <button class="btn-yes selected">yes</button>
+                        <button class="btn-no">no</button>
+                    </div>
+                </div>
+            </article>
+            
+            <article>
+                <label>Now it's time to discuss any items from your agenda...</label>
+            </article>
+
+            <div id="agenda-items">
+
+            </div>
+
+            <article>
+                <label>Do you have any further agenda items?</label>
+                if so, <button class="btn-add-agenda-item">add another agenda item</button>
+            </article>
+
+            <article>
+                <label>Were there any other matters raised and discussed?</label>
+                describe the matters that were discussed
+                <textarea id="other-discussion" class="textarea"></textarea>
+
+                <div id="other-discussion-dependency">
+                    enter any decisions made
+                    <textarea id="other-decision" class="textarea"></textarea>
+
+                    <div id="other-decision-dependency">
+                        who moved that these decisions be accepted?
+                        <div class="motion">
+                            <div class="mover">mover <input class="input names" type="text" value="" /></div>
+                            <div class="seconder">seconded by <input class="input names" type="text" value="" /></div>
+                        </div>
+
+                        were these decisions accepted?
+                        <div class="yesno">
+                            <button class="btn-yes selected">yes</button>
+                            <button class="btn-no">no</button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article>
+                <label>When and where will you hold the next meeting?</label>
+                on <input class="input short" type="text" placeholder="dd/mm/yy" />
+                location <input class="input" type="text" value="" />
+            </article>
+
+            <article>
+                <label>What time was the meeting closed?</label>
+                at <input class="input short" type="text" placeholder="hh:mm" />
+            </article>
+
+            <article>
+                <label>Download your minutes!</label>
+                <div class="word-icon"></div>
+            </article>
+
+        </section>
+
+        <div style="display:none;">
+            <article id="agenda-item-template" class="agenda-item">
+                <label>Agenda item no. x</label>
+                describe the agenda item that was discussed
+                <textarea class="textarea agenda-item-discussed-text"></textarea>
+
+                <div class="agenda-item-decision">
+                    describe your decision, if any
+                    <textarea class="textarea agenda-item-decision-text"></textarea>
+                </div>
+
+                <div class="agenda-item-motion">
+                    who moved that this decision is accepted
+                    <div class="motion">
+                        <div class="mover">mover <input class="input names" type="text" value="" /></div>
+                        <div class="seconder">seconded by <input class="input names" type="text" value="" /></div>
+                    </div>
+
+                    was this decision accepted?
+                    <div class="yesno">
+                        <button class="btn-yes selected">yes</button>
+                        <button class="btn-no">no</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <script src="js/plugins.js"></script>
+            <script src="js/main.js"></script>
+            <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+            <!--<script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='https://www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>-->
+</body>
+</html>
