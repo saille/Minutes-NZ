@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
 
@@ -30,73 +31,73 @@
             <h2>Professional meeting minutes in seconds!</h2>
         </header>
         
-        <section class="page">
+        <div id="help-sidebar" class="collapsed">
+            
+            <div class="relative">
+                <div id="help-close-btn-container"><!--&#xf059;--></div>
+            </div>
 
-            <div id="help-sidebar">
-                <article id="orgnanisation-name-help">
+            <div id="help-content">
+                
+                <article id="orgnanisation-name-help" class="article help-group01">
                     <h2>Organisation Name</h2>
                     <p>
                         Enter the full name of your organisation.
                     </p>
                 </article>
 
-                <article id="meeting-date-help">
+                <article id="meeting-date-help" class="article help-group01">
                     <h2>Meeting date</h2>
                     <p>
                         Enter the date that you are meeting.
                     </p>
                 </article>
 
-                <article id="meeting-location-help">
+                <article id="meeting-location-help" class="article help-group01">
                     <h2>Meeting location</h2>
                     <p>
                         Enter the name of the place where you are meeting.
                     </p>
                 </article>
 
-                <article id="attendees-help">
+                <article id="attendees-help" class="article help-group01">
                     <h2>Attendees</h2>
                     <p>
                         List the names of the attendees. Separate each name by a comma.
                     </p>
                 </article>
+
+                <article id="apologies-help" class="article help-group02">
+                    <h2>Apologies</h2>
+                    <p>
+                        List the names of group members that cannot attend this meeting. Separate each name by a comma.
+                    </p>
+                </article>
+
+                <article id="general-help" class="help-group00">
+                    <p>
+                        <i class="fa fa-question-circle"></i>  Need help? Click on any field to see additional information.
+                    </p>
+                </article>
             </div>
+        </div>
+
+        <section class="page">
 
             <article>
                 <label for="orgnanisation-name">What is the name of your organisation?</label>
-                <div class="relative">
-                    
-                    <input id="orgnanisation-name" class="input" type="text" autofocus value="Kitt" />
-                    <!--<div id="orgnanisation-name-help" class="help-text">
-                        <div class="help-text-container">
-                            <div>Enter the full name of your organisation.</div><i class="help">?</i>
-                        </div>
-                    </div>-->
-                </div>
+                <input id="orgnanisation-name" class="input" type="text" autofocus value="Kitt" />
             </article>
             
             <article>
                 <label for="meeting-date">When and where are you meeting?</label>
                 <span class="sublabel">on</span> 
 
-                <div class="relative">
-                    <input id="meeting-date" class="input short default-date-now" type="text" placeholder="dd/mm/yy hh:mm" />
-                    <!--<div id="meeting-date-help" class="help-text">
-                        <div class="help-text-container">
-                            <div>Enter the date that you are meeting.</div><i class="help">?</i>
-                        </div>
-                    </div>-->
-                </div>
+                <input id="meeting-date" class="input short default-date-now" type="text" placeholder="dd/mm/yy hh:mm" />
 
-                <div class="relative">
-                    <span class="sublabel">location</span>
-                    <input id="meeting-location" class="input short" type="text" value="BNZ" />
-                    <!--<div id="meeting-location-help" class="help-text">
-                        <div class="help-text-container">
-                            <div>Enter the name of the place where you are meeting.</div><i class="help">?</i>
-                        </div>
-                    </div>-->
-                </div>
+                <span class="sublabel">location</span>
+                <input id="meeting-location" class="input short" type="text" value="BNZ" />
+
             </article>
 
             <article>
@@ -302,7 +303,7 @@
                 <input id="next-meeting-date" class="input short" type="text" placeholder="dd/mm/yy hh:mm" />
                 
                 <span class="sublabel">location</span> 
-                <input id="next-meeting-location" class="input" type="text" value="" />
+                <input id="next-meeting-location" class="input short" type="text" value="" />
             </article>
 
             <article>

@@ -152,46 +152,51 @@ $(function () {
 	dependsOn2($('#other-discussion-dependency'), $('#other-discussion'));
 	dependsOn2($('#other-decision-dependency'), $('#other-decision'));
 
-	$('#orgnanisation-name').focus(function (e) {
-	    $('#orgnanisation-name-help').addClass('highlight');
-	});
 
-	$('#orgnanisation-name').blur(function (e) {
-	    $('#orgnanisation-name-help').removeClass('highlight');
+
+	function showHelpGoup01() {
+	    $('#help-content .article').hide(); // hide all help articles
+	    $('#help-content .help-group01').show();
+	}
+
+	function showHelpGoup02() {
+	    $('#help-content .article').hide(); // hide all help articles
+	    $('#help-content .help-group02').show();
+	}
+
+	showHelpGoup01();
+
+	$('#orgnanisation-name').focus(function (e) {
+	    showHelpGoup01();
 	});
 
 	$('#meeting-date').focus(function (e) {
-	    $('#meeting-date-help').addClass('highlight');
-	});
-
-	$('#meeting-date').blur(function (e) {
-	    $('#meeting-date-help').removeClass('highlight');
+	    showHelpGoup01();
 	});
 
 	$('#meeting-location').focus(function (e) {
-	    $('#meeting-location-help').addClass('highlight');
-	});
-
-	$('#meeting-location').blur(function (e) {
-	    $('#meeting-location-help').removeClass('highlight');
+	    showHelpGoup01();
 	});
 
 	$('#attendees').focus(function (e) {
-	    $('#attendees-help').addClass('highlight');
+	    showHelpGoup01();
 	});
 
-	$('#attendees').blur(function (e) {
-	    $('#attendees-help').removeClass('highlight');
+	$('#apologies-names').focus(function (e) {
+	    showHelpGoup02();
 	});
 
-	//$('input, textarea, select').blur(function (e) {
-	//    $('.help-text').hide(effectDelayms);
-	//});
-
-    //temp
-	//$('.help').click(function (e) {
-	//    $('#orgnanisation-name-help').toggle(effectDelayms);
-	//});
+	$('#help-sidebar').click(function () {
+	    // expand/collapse help sidebar
+	    var help = $(this);
+	    if (help.hasClass('collapsed')) {
+	        help.removeClass('collapsed');
+	        help.addClass('expanded');
+	    } else {
+	        help.removeClass('expanded');
+	        help.addClass('collapsed');
+	    }
+	});
 
 	// move carret to end when focussing on a textarea so user can start typing
 	// http://stackoverflow.com/questions/6003300/how-to-place-cursor-at-end-of-text-in-textarea-when-tabbed-into
