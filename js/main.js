@@ -154,36 +154,36 @@ $(function () {
 
 
 
-	function showHelpGoup01() {
+	function showHelpGroup01() {
 	    $('#help-content .article').hide(); // hide all help articles
 	    $('#help-content .help-group01').show();
 	}
 
-	function showHelpGoup02() {
+	function showHelpGroup02() {
 	    $('#help-content .article').hide(); // hide all help articles
 	    $('#help-content .help-group02').show();
 	}
 
-	showHelpGoup01();
+	showHelpGroup01();
 
 	$('#orgnanisation-name').focus(function (e) {
-	    showHelpGoup01();
+	    showHelpGroup01();
 	});
 
 	$('#meeting-date').focus(function (e) {
-	    showHelpGoup01();
+	    showHelpGroup01();
 	});
 
 	$('#meeting-location').focus(function (e) {
-	    showHelpGoup01();
+	    showHelpGroup01();
 	});
 
 	$('#attendees').focus(function (e) {
-	    showHelpGoup01();
+	    showHelpGroup01();
 	});
 
 	$('#apologies-names').focus(function (e) {
-	    showHelpGoup02();
+	    showHelpGroup02();
 	});
 
 	$('#help-sidebar').click(function () {
