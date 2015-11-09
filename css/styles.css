@@ -40,6 +40,7 @@ header{
     background:#ececec;
     padding:24px 0 28px 12px;
     margin:0 0 24px 0;
+    position:relative;
 }
 
 header i.logo{
@@ -50,6 +51,15 @@ header i.logo{
     background: #ececec url('../img/1444614868_file.png') no-repeat -24px -12px;
     display:block;
     float:left;
+}
+
+.logo2{
+    color:#90caf9;
+    font-size:60pt;
+    font-family: "FontAwesome";
+    position:absolute;
+    top:20px;
+    left:30px;
 }
 
 header h1{
