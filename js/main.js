@@ -1,6 +1,6 @@
 $(function () {
 	
-	var effectDelayms = 200;
+    var effectDelayms = 200;
 
 	var d = new Date();
 	
@@ -186,17 +186,19 @@ $(function () {
 	    showHelpGroup02();
 	});
 
-	$('#help-sidebar').click(function () {
-	    // expand/collapse help sidebar
-	    var help = $(this);
-	    if (help.hasClass('collapsed')) {
-	        help.removeClass('collapsed');
-	        help.addClass('expanded');
-	    } else {
-	        help.removeClass('expanded');
-	        help.addClass('collapsed');
-	    }
-	});
+	//$('#help-close-btn-container').click(function () {
+	//    // expand/collapse help sidebar
+	//    var help = $('#help-sidebar');
+	//    if (help.hasClass('collapsed')) {
+	//        help.removeClass('collapsed');
+	//        help.addClass('expanded');
+    //        $('#help-close-btn-container').attr('title', 'close help sidebar')
+	//    } else {
+	//        help.removeClass('expanded');
+	//        help.addClass('collapsed');
+	//        $('#help-close-btn-container').attr('title', 'show help sidebar')
+	//    }
+	//});
 
 	// move carret to end when focussing on a textarea so user can start typing
 	// http://stackoverflow.com/questions/6003300/how-to-place-cursor-at-end-of-text-in-textarea-when-tabbed-into
@@ -247,5 +249,58 @@ $(function () {
 		});
 	}();
 
+    
+	var $help = $("#help-content");
+	var $header = $("header");
+
+
+	if (Modernizr.touch) {
+
+	    setInterval(function () {
+	        
+	        // use absolute positioning to behave like fixed positioning on touch devices
+
+	        var scrollTop = $(window).scrollTop();
+	        var helpOffsetTop = $help.offset().top;
+
+	        if (scrollTop > $header.height()) {
+	            if (Math.abs(scrollTop - helpOffsetTop) > 1) {
+                    
+	                $help.css('margin-top', 20 + scrollTop - $header.height() + 'px');
+	            } else {
+	                $help.css('margin-top', '20px');
+	            }
+	        } else {
+	            $help.css('margin-top', '20px');
+	        }
+
+	    }, 200);
+
+	} else {
+	    $(window).scroll(function () {
+
+	        // on non-touch, we can use fixed positioning to keep the help
+            // visible, but only when the header has scrolled of screen
+
+	        var scrollTop = $(window).scrollTop();
+	        var helpOffsetTop = $help.offset().top;
+
+	        if (scrollTop > $header.height()) {
+	            if (Math.abs(scrollTop - helpOffsetTop) > 1) {
+	                $help.css('position', 'fixed');
+	                $help.css('top', '0');
+	            } else {
+	                $help.css('position', 'relative');
+	                $help.css('margin-top', '20px');
+	            }
+	        } else {
+	            $help.css('position', 'relative');
+	            $help.css('margin-top', '20px');
+	        }
+	    });
+	}
+	
 });
+
+
 

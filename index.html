@@ -26,20 +26,19 @@
         <![endif]-->
 
         <header>
-            <!--<i class="logo"></i>-->
             <div class="logo2">&#xf15c;</div>
             <h1>minutes.nz</h1>
             <h2>Professional meeting minutes in seconds!</h2>
         </header>
         
-        <div id="help-sidebar" class="collapsed">
-            
-            <div class="relative">
-                <div id="help-close-btn-container"><!--&#xf059;--></div>
+        <div id="help-sidebar" class="expanded">
+
+            <div id="help-close-btn-container" title="show help sidebar">
+                <div id="help-close-btn-container-icon"></div>
             </div>
 
             <div id="help-content">
-                
+
                 <article id="orgnanisation-name-help" class="article help-group01">
                     <h2>Organisation Name</h2>
                     <p>
@@ -77,7 +76,7 @@
 
                 <article id="general-help" class="help-group00">
                     <p>
-                        <i class="fa fa-question-circle"></i>  Need help? Click on any field to see additional information.
+                        <!--<i class="fa fa-question-circle"></i>-->  Need help? Click on any field to see additional information.
                     </p>
                 </article>
             </div>
@@ -85,238 +84,242 @@
 
         <section class="page">
 
-            <article>
-                <label for="orgnanisation-name">What is the name of your organisation?</label>
-                <input id="orgnanisation-name" class="input" type="text" autofocus value="Kitt" />
-            </article>
-            
-            <article>
-                <label for="meeting-date">When and where are you meeting?</label>
-                <span class="sublabel">on</span> 
+            <div class="page-inner">
 
-                <input id="meeting-date" class="input short default-date-now" type="text" placeholder="dd/mm/yy hh:mm" />
+                <article>
+                    <label for="orgnanisation-name">What is the name of your organisation?</label>
+                    <input id="orgnanisation-name" class="input" type="text" value="Kitt" />
+                </article>
 
-                <span class="sublabel">location</span>
-                <input id="meeting-location" class="input short" type="text" value="BNZ" />
+                <article>
+                    <label for="meeting-date">When and where are you meeting?</label>
+                    <span class="sublabel">on</span>
 
-            </article>
+                    <input id="meeting-date" class="input short default-date-now" type="text" placeholder="dd/mm/yy hh:mm" />
 
-            <article>
-                <label for="attendees">Who is in attendance?</label> 
-                <span class="sublabel">list names</span> 
-                <input id="attendees" class="input names" type="text" value="Dave, Jenine, Ben, Sean" />
-            </article>
+                    <span class="sublabel">location</span>
+                    <input id="meeting-location" class="input short" type="text" value="BNZ" />
 
-            <article>
-                <label for="apologies-names">Are there any apologies?</label> 
-                <span class="sublabel">list names</span>
-                <input id="apologies-names" class="input names" type="text" value="Craig, Mack" />
-                <div class="motion">
-                    <div class="mover"><span class="sublabel">moved by</span> <input id="apologies-mover" class="input names" type="text" value="Ben" /></div>
-                    <div class="seconder"><span class="sublabel">seconded by</span> <input id="apologies-seconder" class="input names" type="text" value="Jenine" /></div>
-                    
-                </div>
-                <span class="sublabel">did the motion pass</span>
-                <div class="yesno">
-                    <button class="btn-yes selected">yes</button>
-                    <button class="btn-no">no</button>
-                </div>
-            </article>
+                </article>
 
-            <article>
-                <label for="previous-meeting-date">When was the previous meeting?</label>
-                <span class="sublabel">on</span> <input id="previous-meeting-date" class="input short" type="text" placeholder="dd/mm/yy" />
-            </article>
+                <article>
+                    <label for="attendees">Who is in attendance?</label>
+                    <span class="sublabel">list names</span>
+                    <input id="attendees" class="input names" type="text" value="Dave, Jenine, Ben, Sean" />
+                </article>
 
-            <article>
-                <label>Are the minutes of the previous meeting are a true and correct record?</label>
-                <div class="motion">
-                    <div class="mover"><span class="sublabel">moved by</span> <input id="previous-minutes-true-mover" class="input names" type="text" value="Ben" /></div>
-                    <div class="seconder"><span class="sublabel">seconded by</span> <input id="previous-minutes-true-seconder" class="input names" type="text" value="Jenine" /></div>
-                </div>
-                <span class="sublabel">did the motion pass</span>
-                <div class="yesno">
-                    <button class="btn-yes selected">yes</button>
-                    <button class="btn-no">no</button>
-                </div>
-                 
-                <div class="chooser-container">
-                    <span class="sublabel inline">if the motion was not passed, describe the reason</span>
-                    <div class="chooser">
+                <article>
+                    <label for="apologies-names">Are there any apologies?</label>
+                    <span class="sublabel">list names</span>
+                    <input id="apologies-names" class="input names" type="text" value="Craig, Mack" />
+                    <div class="motion">
+                        <div class="mover"><span class="sublabel">moved by</span> <input id="apologies-mover" class="input names" type="text" value="Ben" /></div>
+                        <div class="seconder"><span class="sublabel">seconded by</span> <input id="apologies-seconder" class="input names" type="text" value="Jenine" /></div>
+
+                    </div>
+                    <span class="sublabel">did the motion pass</span>
+                    <div class="yesno">
+                        <button class="btn-yes selected">yes</button>
+                        <button class="btn-no">no</button>
+                    </div>
+                </article>
+
+                <article>
+                    <label for="previous-meeting-date">When was the previous meeting?</label>
+                    <span class="sublabel">on</span> <input id="previous-meeting-date" class="input short" type="text" placeholder="dd/mm/yy" />
+                </article>
+
+                <article>
+                    <label>Are the minutes of the previous meeting are a true and correct record?</label>
+                    <div class="motion">
+                        <div class="mover"><span class="sublabel">moved by</span> <input id="previous-minutes-true-mover" class="input names" type="text" value="Ben" /></div>
+                        <div class="seconder"><span class="sublabel">seconded by</span> <input id="previous-minutes-true-seconder" class="input names" type="text" value="Jenine" /></div>
+                    </div>
+                    <span class="sublabel">did the motion pass</span>
+                    <div class="yesno">
+                        <button class="btn-yes selected">yes</button>
+                        <button class="btn-no">no</button>
+                    </div>
+
+                    <div class="chooser-container">
+                        <span class="sublabel inline">if the motion was not passed, describe the reason</span>
+                        <div class="chooser">
                             or <button class="btn-chooser">choose one</button>
                             <select class="select-chooser">
                                 <option selected></option>
                                 <option>This motion was not passed as corrections are required to the previous minutes</option>
                                 <option>This motion was not passed as </option>
                             </select>
+                        </div>
+                        <br />
+                        <textarea id="previous-minutes-not-passed-reason" class="textarea"></textarea>
                     </div>
-                    <br/>
-                    <textarea id="previous-minutes-not-passed-reason" class="textarea"></textarea>
-                </div>
-            </article>
+                </article>
 
-            <article>
-                <label for="previous-minutes-matters-arising">Are there any matters arising from the previous minutes?</label>
-                <span class="sublabel">describe what was discussed</span>
-                <textarea class="textarea"></textarea>
-                
-                <span class="sublabel">list any decisions made</span>
-                <textarea id="previous-minutes-matters-arising" class="textarea"></textarea>
-            </article>
+                <article>
+                    <label for="previous-minutes-matters-arising">Are there any matters arising from the previous minutes?</label>
+                    <span class="sublabel">describe what was discussed</span>
+                    <textarea class="textarea"></textarea>
 
-            <article>
-                <label for="correspondence">Is there any correspondence to record?</label>
-                <span class="sublabel">list any correspondence</span>
-                <textarea id="correspondence" class="textarea"></textarea>
-            </article>
+                    <span class="sublabel">list any decisions made</span>
+                    <textarea id="previous-minutes-matters-arising" class="textarea"></textarea>
+                </article>
 
-            <div id="correspondence-motion">
-                <label>Who moves that the correspondence be accepted?</label>
-                <div class="motion">
-                    <div class="mover"><span class="sublabel">moved by</span> <input id="correspondence-mover" class="input names" type="text" value="" /></div>
-                    <div class="seconder"><span class="sublabel">seconded by</span> <input id="correspondence-seconder" class="input names" type="text" value="" /></div>
-                </div>
-                <span class="sublabel">did the motion pass</span>
-                <div class="yesno">
-                    <button class="btn-yes selected">yes</button>
-                    <button class="btn-no">no</button>
-                </div>
+                <article>
+                    <label for="correspondence">Is there any correspondence to record?</label>
+                    <span class="sublabel">list any correspondence</span>
+                    <textarea id="correspondence" class="textarea"></textarea>
+                </article>
 
-                <div class="chooser-container">
-                    <span class="sublabel inline">if the motion was not passed, describe the reason</span>
-                    <div class="chooser">
-                        or <button class="btn-chooser">choose one</button>
-                        <select class="select-chooser">
-                            <option selected></option>
-                            <option>This motion was not passed as </option>
-                        </select>
+                <div id="correspondence-motion">
+                    <label>Who moves that the correspondence be accepted?</label>
+                    <div class="motion">
+                        <div class="mover"><span class="sublabel">moved by</span> <input id="correspondence-mover" class="input names" type="text" value="" /></div>
+                        <div class="seconder"><span class="sublabel">seconded by</span> <input id="correspondence-seconder" class="input names" type="text" value="" /></div>
                     </div>
-                    <br/>
-                    <textarea id="correspondence-motion-not-passed-reason" class="textarea"></textarea>
-                </div>
-            </div>
-
-            <article>
-                <label>Is there a Financial Report being presented to the meeting?</label>
-                
-                <div class="motion">
-                    <div class="mover">
-                        <span class="sublabel">financial report was presented by</span>
-                        <input id="financial-report-presenter" class="input names" type="text" value="" />
-                    </div>
-                    <div class="seconder">
-                        <span class="sublabel">seconded by</span> 
-                        <input id="financial-report-seconder" class="input names" type="text" value="" />
-                    </div>
-                </div>
-                <span class="sublabel">did the motion pass</span>
-                <div class="yesno">
-                    <button class="btn-yes selected">yes</button>
-                    <button class="btn-no">no</button>
-                </div>
-
-                <div id="financial-report-dependency">
-                    <span class="sublabel">list any payments that require approval</span>
-                    <textarea id="financial-report-payments-for-approval" class="textarea"></textarea>
-
-                    <span class="sublabel">were the payments listed approved and the report accepted?</span>
+                    <span class="sublabel">did the motion pass</span>
                     <div class="yesno">
                         <button class="btn-yes selected">yes</button>
                         <button class="btn-no">no</button>
                     </div>
+
+                    <div class="chooser-container">
+                        <span class="sublabel inline">if the motion was not passed, describe the reason</span>
+                        <div class="chooser">
+                            or <button class="btn-chooser">choose one</button>
+                            <select class="select-chooser">
+                                <option selected></option>
+                                <option>This motion was not passed as </option>
+                            </select>
+                        </div>
+                        <br />
+                        <textarea id="correspondence-motion-not-passed-reason" class="textarea"></textarea>
+                    </div>
                 </div>
-            </article>
 
-            <article>
-                <label>Are there any other reports to be presented to the meeting?</label>
-                <span class="sublabel">for example your president may have a report to be tabled</span>
-                <textarea id="other-report" class="textarea"></textarea>
+                <article>
+                    <label>Is there a Financial Report being presented to the meeting?</label>
 
-                <div id="other-report-dependency">
-                    <span class="sublabel">who moves that this report is accepted</span>
                     <div class="motion">
                         <div class="mover">
-                            <span class="sublabel">moved by</span>
-                            <input id="other-report-mover" class="input names" type="text" value="" />
+                            <span class="sublabel">financial report was presented by</span>
+                            <input id="financial-report-presenter" class="input names" type="text" value="" />
                         </div>
                         <div class="seconder">
                             <span class="sublabel">seconded by</span>
-                            <input id="other-report-seconder" class="input names" type="text" value="" />
+                            <input id="financial-report-seconder" class="input names" type="text" value="" />
                         </div>
                     </div>
-
-                    <span class="sublabel">was this report accepted?</span>
+                    <span class="sublabel">did the motion pass</span>
                     <div class="yesno">
                         <button class="btn-yes selected">yes</button>
                         <button class="btn-no">no</button>
                     </div>
-                </div>
-            </article>
-            
-            <article>
-                <label>Now it's time to discuss any items from the agenda...</label>
-            </article>
 
-            <div id="agenda-items">
+                    <div id="financial-report-dependency">
+                        <span class="sublabel">list any payments that require approval</span>
+                        <textarea id="financial-report-payments-for-approval" class="textarea"></textarea>
 
-            </div>
-
-            <article>
-                <label>Do you have any further agenda items?</label>
-                <br/>
-                <span class="sublabel inline">if so,</span> <button class="btn-add-agenda-item">add another agenda item</button>
-            </article>
-
-            <article>
-                <label for="other-decision">Are there any other matters to be raised and discussed?</label>
-                <span class="sublabel">describe the matters that were discussed</span>
-                <textarea id="other-discussion" class="textarea"></textarea>
-
-                <div id="other-discussion-dependency">
-                    <span class="sublabel">enter any decisions made</span>
-                    <textarea id="other-decision" class="textarea"></textarea>
-
-                    <div id="other-decision-dependency">
-                        <span class="sublabel">who moves that these decisions be accepted?</span>
-                        <div class="motion">
-                            <div class="mover">
-                                <span class="sublabel">moved by</span> 
-                                <input class="input names" type="text" value="" />
-                            </div>
-                            <div class="seconder">
-                                <span class="sublabel">seconded by</span> 
-                                <input class="input names" type="text" value="" />
-                            </div>
-                        </div>
-
-                        <span class="sublabel">were these decisions accepted?</span>
+                        <span class="sublabel">were the payments listed approved and the report accepted?</span>
                         <div class="yesno">
                             <button class="btn-yes selected">yes</button>
                             <button class="btn-no">no</button>
                         </div>
                     </div>
+                </article>
+
+                <article>
+                    <label>Are there any other reports to be presented to the meeting?</label>
+                    <span class="sublabel">for example your president may have a report to be tabled</span>
+                    <textarea id="other-report" class="textarea"></textarea>
+
+                    <div id="other-report-dependency">
+                        <span class="sublabel">who moves that this report is accepted</span>
+                        <div class="motion">
+                            <div class="mover">
+                                <span class="sublabel">moved by</span>
+                                <input id="other-report-mover" class="input names" type="text" value="" />
+                            </div>
+                            <div class="seconder">
+                                <span class="sublabel">seconded by</span>
+                                <input id="other-report-seconder" class="input names" type="text" value="" />
+                            </div>
+                        </div>
+
+                        <span class="sublabel">was this report accepted?</span>
+                        <div class="yesno">
+                            <button class="btn-yes selected">yes</button>
+                            <button class="btn-no">no</button>
+                        </div>
+                    </div>
+                </article>
+
+                <article>
+                    <label>Now it's time to discuss any items from the agenda...</label>
+                </article>
+
+                <div id="agenda-items">
+
                 </div>
-            </article>
 
-            <article>
-                <label for="next-meeting-date">When and where will you hold the next meeting?</label>
-                <span class="sublabel">on</span> 
-                <input id="next-meeting-date" class="input short" type="text" placeholder="dd/mm/yy hh:mm" />
-                
-                <span class="sublabel">location</span> 
-                <input id="next-meeting-location" class="input short" type="text" value="" />
-            </article>
+                <article>
+                    <label>Do you have any further agenda items?</label>
+                    <br />
+                    <span class="sublabel inline">if so,</span> <button class="btn-add-agenda-item">add another agenda item</button>
+                </article>
 
-            <article>
-                <label for="meeting-closed-time">What time was the meeting closed?</label>
-                <span class="sublabel">at</span> 
-                <input id="meeting-closed-time" class="input short" type="text" placeholder="hh:mm" />
-            </article>
+                <article>
+                    <label for="other-decision">Are there any other matters to be raised and discussed?</label>
+                    <span class="sublabel">describe the matters that were discussed</span>
+                    <textarea id="other-discussion" class="textarea"></textarea>
 
-            <article>
-                <label>Download your minutes!</label>
-                <div class="word-icon"></div>
-            </article>
+                    <div id="other-discussion-dependency">
+                        <span class="sublabel">enter any decisions made</span>
+                        <textarea id="other-decision" class="textarea"></textarea>
+
+                        <div id="other-decision-dependency">
+                            <span class="sublabel">who moves that these decisions be accepted?</span>
+                            <div class="motion">
+                                <div class="mover">
+                                    <span class="sublabel">moved by</span>
+                                    <input class="input names" type="text" value="" />
+                                </div>
+                                <div class="seconder">
+                                    <span class="sublabel">seconded by</span>
+                                    <input class="input names" type="text" value="" />
+                                </div>
+                            </div>
+
+                            <span class="sublabel">were these decisions accepted?</span>
+                            <div class="yesno">
+                                <button class="btn-yes selected">yes</button>
+                                <button class="btn-no">no</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article>
+                    <label for="next-meeting-date">When and where will you hold the next meeting?</label>
+                    <span class="sublabel">on</span>
+                    <input id="next-meeting-date" class="input short" type="text" placeholder="dd/mm/yy hh:mm" />
+
+                    <span class="sublabel">location</span>
+                    <input id="next-meeting-location" class="input short" type="text" value="" />
+                </article>
+
+                <article>
+                    <label for="meeting-closed-time">What time was the meeting closed?</label>
+                    <span class="sublabel">at</span>
+                    <input id="meeting-closed-time" class="input short" type="text" placeholder="hh:mm" />
+                </article>
+
+                <article>
+                    <label>Download your minutes!</label>
+                    <div class="word-icon"></div>
+                </article>
+
+            </div>
 
         </section>
 
@@ -354,6 +357,7 @@
             </article>
         </div>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
