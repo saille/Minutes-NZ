@@ -13,22 +13,24 @@ $(function () {
 	
 	var chooserBehaviour = function () {
 		
-		// opens a select list without requiring user to click it
-		function open(elem) {
-			if (document.createEvent) {
-				var e = document.createEvent("MouseEvents");
-				e.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-				elem[0].dispatchEvent(e);
-			} else if (element.fireEvent) {
-				elem[0].fireEvent("onmousedown");
-			}
-		}
-		
-		// open the select list
-		$('.btn-chooser').click(function (e) {
-			var s = $('.select-chooser', e.target.parentElement);
-			s.show(effectDelayms, function () { open(s) });
-		})
+	    if (!Modernizr.touch) {
+	        // opens a select list without requiring user to click it
+	        function open(elem) {
+	            if (document.createEvent) {
+	                var e = document.createEvent("MouseEvents");
+	                e.initMouseEvent("mousedown", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+	                elem[0].dispatchEvent(e);
+	            } else if (element.fireEvent) {
+	                elem[0].fireEvent("onmousedown");
+	            }
+	        }
+
+	        // open the select list
+	        $('.btn-chooser').click(function (e) {
+	            var s = $('.select-chooser', e.target.parentElement);
+	            s.show(effectDelayms, function () { open(s) });
+	        })
+	    }
 		
 		// set the text based on the select item that was selected
 		$('.select-chooser').change(function (e) {
@@ -49,16 +51,18 @@ $(function () {
 		});
 	} ();
 	
-	// auto-grow a textarea element based on content size
-	function autoGrowTextArea(textarea) {
-		textarea.style.height = 'auto';
-		textarea.style.height = textarea.scrollHeight + 'px';
-	}
+	var testareaAutoGrowBehaviour = function () {
+	    // auto-grow a textarea element based on content size
+	    function autoGrowTextArea(textarea) {
+	        textarea.style.height = 'auto';
+	        textarea.style.height = textarea.scrollHeight + 'px';
+	    }
 
-	// auto-grow textareas on key up
-	$('.textarea').keyup(function (e) {
-		autoGrowTextArea(e.target);
-	});
+	    // auto-grow textareas on key up
+	    $('.textarea').keyup(function (e) {
+	        autoGrowTextArea(e.target);
+	    });
+	}();
 	
 	var allEmpty = function (elements) {
 		
@@ -79,7 +83,7 @@ $(function () {
 		});
 	} ();
 	
-	var dependsOn2 = function (elementToHide, textElements) {
+	var dependsOn = function (elementToHide, textElements) {
 		
 		// set initial visibility of elements
 		if (allEmpty(textElements)) {
@@ -125,9 +129,9 @@ $(function () {
 	
 	var setupAgendaItemDependencies = function (idx, agendaItem) {
 		var thisAgendaItemNum = idx + 1;
-		dependsOn2($('#agenda-item-decision-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussed-text-' + thisAgendaItemNum, agendaItem));
-		//dependsOn2($('#agenda-item-motion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-decision-text-' + thisAgendaItemNum));// + ', #agenda-item-discussed-text-' + thisAgendaItemNum, agendaItem));
-		dependsOn2($('#agenda-item-motion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussed-text-' + thisAgendaItemNum));
+		dependsOn($('#agenda-item-decision-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussed-text-' + thisAgendaItemNum, agendaItem));
+		//dependsOn($('#agenda-item-motion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-decision-text-' + thisAgendaItemNum));// + ', #agenda-item-discussed-text-' + thisAgendaItemNum, agendaItem));
+		dependsOn($('#agenda-item-motion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussed-text-' + thisAgendaItemNum));
 	};
 
 	// dynamically add agenda items
@@ -146,45 +150,84 @@ $(function () {
 	setupAgendaItemDependencies(0, firstAgendaItem);
 	
 	// setup other dependencies
-	dependsOn2($('#correspondence-motion'), $('#correspondence'));
-	dependsOn2($('#financial-report-dependency'), $('#financial-report-presenter'));
-	dependsOn2($('#other-report-dependency'), $('#other-report'));
-	dependsOn2($('#other-discussion-dependency'), $('#other-discussion'));
-	dependsOn2($('#other-decision-dependency'), $('#other-decision'));
+	dependsOn($('#correspondence-motion'), $('#correspondence-text'));
+	dependsOn($('#financial-report-dependency'), $('#financial-report-presenter'));
+	dependsOn($('#other-report-dependency'), $('#other-report-text'));
+	dependsOn($('#other-discussion-dependency'), $('#other-discussion'));
+	dependsOn($('#other-decision-dependency'), $('#other-decision'));
 
+	//$('#help-content .help-group-get-started').show();
 
-
-	function showHelpGroup01() {
-	    $('#help-content .article').hide(); // hide all help articles
-	    $('#help-content .help-group01').show();
-	}
-
-	function showHelpGroup02() {
-	    $('#help-content .article').hide(); // hide all help articles
-	    $('#help-content .help-group02').show();
-	}
-
-	showHelpGroup01();
-
-	$('#orgnanisation-name').focus(function (e) {
-	    showHelpGroup01();
+	$('#organisation *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-get-started').show();
+	    $('#help-content .help-group-organisation').show();
 	});
 
-	$('#meeting-date').focus(function (e) {
-	    showHelpGroup01();
+	$('#meeting-date-article *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-organisation').show();
 	});
 
-	$('#meeting-location').focus(function (e) {
-	    showHelpGroup01();
+	$('#meeting-date-and-location *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-meeting-date').show();
+	    $('#help-content .help-group-meeting-location').show();
 	});
 
-	$('#attendees').focus(function (e) {
-	    showHelpGroup01();
+	$('#attendees *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-attendees').show();
 	});
 
-	$('#apologies-names').focus(function (e) {
-	    showHelpGroup02();
+	$('#apologies *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-apologies').show();
 	});
+
+	$('#previous-meeting *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-previous-meeting').show();
+	});
+
+	$('#previous-meeting-true-and-correct *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-previous-meeting-true-and-correct').show();
+	});
+
+	$('#previous-minutes-matters-arising *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-matters-arising-from-previous-meeting').show();
+	});
+
+	$('#correspondence *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-correspondence').show();
+	});
+
+	$('#financial-report *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-financial-report').show();
+	});
+
+	$('#other-reports *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-other-reports').show();
+	});
+
+	$('.motion *').focus(function (e) {
+	    //$('#help-content .article').hide(); // hide all help articles
+	    $('#help-content .help-group-motion').show();
+	});
+
+
+	$('#start-btn').click(function () {
+	    window.location = '#page';
+	    $('#orgnanisation-name').focus();
+	    return false;
+	});
+
+	$('body').addClass('loaded');
 
 	//$('#help-close-btn-container').click(function () {
 	//    // expand/collapse help sidebar
@@ -253,53 +296,99 @@ $(function () {
 	var $help = $("#help-content");
 	var $header = $("header");
 
+	var positionHelpFixed = function () {
+	    // on non-touch, we can use fixed positioning to keep the help
+	    // visible, but only when the header has scrolled of screen.
 
-	if (Modernizr.touch) {
+	    var scrollTop = $(window).scrollTop();
+	    var helpOffsetTop = $help.offset().top;
 
-	    setInterval(function () {
-	        
-	        // use absolute positioning to behave like fixed positioning on touch devices
-
-	        var scrollTop = $(window).scrollTop();
-	        var helpOffsetTop = $help.offset().top;
-
-	        if (scrollTop > $header.height()) {
-	            if (Math.abs(scrollTop - helpOffsetTop) > 1) {
-                    
-	                $help.css('margin-top', 20 + scrollTop - $header.height() + 'px');
-	            } else {
-	                $help.css('margin-top', '20px');
-	            }
-	        } else {
-	            $help.css('margin-top', '20px');
-	        }
-
-	    }, 200);
-
-	} else {
-	    $(window).scroll(function () {
-
-	        // on non-touch, we can use fixed positioning to keep the help
-            // visible, but only when the header has scrolled of screen
-
-	        var scrollTop = $(window).scrollTop();
-	        var helpOffsetTop = $help.offset().top;
-
-	        if (scrollTop > $header.height()) {
-	            if (Math.abs(scrollTop - helpOffsetTop) > 1) {
-	                $help.css('position', 'fixed');
-	                $help.css('top', '0');
-	            } else {
-	                $help.css('position', 'relative');
-	                $help.css('margin-top', '20px');
-	            }
+	    if (scrollTop > $header.height()) {
+	        if (Math.abs(scrollTop - helpOffsetTop) > 1) {
+	            $help.css('position', 'fixed');
+	            $help.css('top', '0');
 	        } else {
 	            $help.css('position', 'relative');
 	            $help.css('margin-top', '20px');
 	        }
+	    } else {
+	        $help.css('position', 'relative');
+	        $help.css('margin-top', '20px');
+	    }
+	};
+
+	//var positionHelpWithMargin = function () {
+
+	//    // Use top margin to position help so that it behaves like fixed positioning on touch devices
+	//    // with keyboard open. Fixed positioning gets turned into absolute on iPads when on-screen
+	//    // keyboard is open (and probably other tablets too).
+
+	//    var scrollTop = $(window).scrollTop();
+	//    var helpOffsetTop = $help.offset().top;
+
+	//    if (scrollTop > $header.height()) {
+	//        if (Math.abs(scrollTop - helpOffsetTop) > 1) {
+
+	//            $help.css('margin-top', 20 + scrollTop - $header.height() + 'px');
+	//        } else {
+	//            $help.css('margin-top', '20px');
+	//        }
+	//    } else {
+	//        $help.css('margin-top', '20px');
+	//    }
+	//};
+
+
+	if (Modernizr.touch) {
+	    $('*').focus(function () {
+	        // move help to where user is focussed
+	        $help.css('margin-top', 20 + $(this).offset().top - $header.height() - 100 + 'px');
 	    });
-	}
-	
+    } else {
+	    $(window).scroll(function () {
+            // move help using css fixed psoitioning
+	        positionHelpFixed();
+	    });
+    }
+
+    // array of possible header background images (for prototype only)
+	var headerImg = [
+        {
+            'background-image': 'url("../img/keyboard-full.jpg")'
+        },
+        {
+            'background-image': 'url("../img/home-office-336373_1920.jpg")'
+        },
+        {
+            'background-image': 'url("../img/keyboard-622456_1920.jpg")'
+        },
+        {
+            'background-image': 'url("../img/mosaic-913658.jpg")'
+        },
+        {
+            'background-image': 'url("../img/table-629772.jpg")'
+        },
+        {
+            'background-image': 'url("../img/typing-690856.jpg")'
+        },
+	];
+
+	var headerImgIdx = 1;
+
+	$header.click(function (e) {
+
+	    // swap image
+	    for (var p in headerImg[headerImgIdx]) {
+	        $header.css(p, headerImg[headerImgIdx][p]);
+	        console.log(headerImg[headerImgIdx][p]);
+	    }
+
+	    headerImgIdx++;
+
+	    if (headerImgIdx == headerImg.length) {
+	        headerImgIdx = 0;
+	    }
+	});
 });
 
 
