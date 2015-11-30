@@ -68,9 +68,16 @@ $(function () {
 		
 		for (var i = 0; i < elements.length; i++) {
 
+		    // a yes/no questions with a 'no' answer is considered 'empty'
+		    if ($('.btn-yes.selected', elements[i]).length > 0) {
+		        return false;
+		    }
+
 			if ($(elements[i]).val() !== '') {
 				return false;
 			}
+
+		    
 		}
 
 		return true;
@@ -93,12 +100,20 @@ $(function () {
 		}
 		
 		// check visibility on key events
-		$(textElements).keyup(function (e) {
+		$('input textarea', textElements).keyup(function (e) {
 			if (allEmpty(textElements)) {
 				$(elementToHide).hide(effectDelayms);
 			} else {
 				$(elementToHide).show(effectDelayms);
 			}
+		});
+
+		$('button', textElements).click(function (e) {
+		    if (allEmpty(textElements)) {
+		        $(elementToHide).hide(effectDelayms);
+		    } else {
+		        $(elementToHide).show(effectDelayms);
+		    }
 		});
 	};
 	
@@ -112,13 +127,19 @@ $(function () {
 		
 		$(agendaItem[0]).attr('id', 'agenda-item-' + thisAgendaItemNum);
 		
-		$('label', agendaItem).text('Agenda item no. ' + thisAgendaItemNum);
+		$('.agenda-item-number', agendaItem).text('Agenda item no. ' + thisAgendaItemNum);
 		
-		// assign id's to elements
-		$('.agenda-item-discussed-text', agendaItem).attr('id', 'agenda-item-discussed-text-' + thisAgendaItemNum);
+	    // assign id's to elements
+		$('.agenda-item-title', agendaItem).attr('id', 'agenda-item-title-' + thisAgendaItemNum);
+		$('.agenda-item-description', agendaItem).attr('id', 'agenda-item-description-' + thisAgendaItemNum);
+		$('.agenda-item-discussion', agendaItem).attr('id', 'agenda-item-discussion-' + thisAgendaItemNum);
+		$('.agenda-item-discussion-text', agendaItem).attr('id', 'agenda-item-discussion-text-' + thisAgendaItemNum);
 		$('.agenda-item-decision', agendaItem).attr('id', 'agenda-item-decision-' + thisAgendaItemNum);
-		$('.agenda-item-decision-text', agendaItem).attr('id', 'agenda-item-decision-text-' + thisAgendaItemNum);
+		$('.agenda-item-decision-reached', agendaItem).attr('id', 'agenda-item-decision-reached-' + thisAgendaItemNum);
+		$('.agenda-item-decision-reached-dependency', agendaItem).attr('id', 'agenda-item-decision-reached-dependency-' + thisAgendaItemNum);
 		$('.agenda-item-motion', agendaItem).attr('id', 'agenda-item-motion-' + thisAgendaItemNum);
+		$('.agenda-item-motion-notes', agendaItem).attr('id', 'agenda-item-motion-notes-' + thisAgendaItemNum);
+		$('.agenda-item-motion-notes-text', agendaItem).attr('id', 'agenda-item-motion-notes-text-' + thisAgendaItemNum);
 
 		agendaItem.hide(); // hide so it can be shown with transition effect
 		agendaItem.appendTo('#agenda-items');
@@ -129,9 +150,11 @@ $(function () {
 	
 	var setupAgendaItemDependencies = function (idx, agendaItem) {
 		var thisAgendaItemNum = idx + 1;
-		dependsOn($('#agenda-item-decision-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussed-text-' + thisAgendaItemNum, agendaItem));
-		//dependsOn($('#agenda-item-motion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-decision-text-' + thisAgendaItemNum));// + ', #agenda-item-discussed-text-' + thisAgendaItemNum, agendaItem));
-		dependsOn($('#agenda-item-motion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussed-text-' + thisAgendaItemNum));
+		//dependsOn($('#agenda-item-discussion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussed-text-' + thisAgendaItemNum, agendaItem));
+	    //dependsOn($('#agenda-item-motion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussion-text-' + thisAgendaItemNum));// + ', #agenda-item-discussed-text-' + thisAgendaItemNum, agendaItem));
+
+		dependsOn($('#agenda-item-decision-reached-dependency-' + thisAgendaItemNum, agendaItem), $('#agenda-item-decision-reached-' + thisAgendaItemNum));
+		//dependsOn($('#agenda-item-motion-' + thisAgendaItemNum, agendaItem), $('#agenda-item-discussed-text-' + thisAgendaItemNum));
 	};
 
 	// dynamically add agenda items
@@ -142,7 +165,7 @@ $(function () {
 		var numAgendaItems = $('#agenda-items > *').length;
 		setupAgendaItemDependencies(numAgendaItems-1, agendaItem);
 
-		$('.textarea', agendaItem)[0].focus(); // focus on first textarea
+		$('.input', agendaItem)[0].focus(); // focus on first input (Title)
 	});
 	
 	var firstAgendaItem = addAgendaItem(); // add initial agenda item
@@ -157,6 +180,8 @@ $(function () {
 	dependsOn($('#other-decision-dependency'), $('#other-decision'));
 
 	//$('#help-content .help-group-get-started').show();
+
+    // Setup context-sensitive help
 
 	$('#organisation *').focus(function (e) {
 	    $('#help-content .article').hide();
@@ -218,6 +243,11 @@ $(function () {
 	$('.motion *').focus(function (e) {
 	    //$('#help-content .article').hide(); // hide all help articles
 	    $('#help-content .help-group-motion').show();
+	});
+
+	$('.agenda-item *').focus(function (e) {
+	    $('#help-content .article').hide();
+	    $('#help-content .help-group-agenda-item').show();
 	});
 
 

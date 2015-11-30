@@ -26,11 +26,15 @@
         <![endif]-->
 
         <header>
-            <div class="logo2">&#xf15c;</div>
-            <h1>minutes.nz</h1>
-            <h2>Professional meeting minutes in seconds!</h2>
+            <div id="header-elements">
+                <div class="logo2">&#xf15c;</div>
+                <h1>minutes.nz</h1>
+                <h2>Professional meeting minutes in seconds!</h2>
+            </div>
 
             <button id="start-btn">Let's Get Started Now!</button>
+
+            <div class="pre-loader"></div>
         </header>
         
         <div id="help-sidebar" class="expanded">
@@ -114,10 +118,12 @@
                     <p>
                         <i class="big-quote"> Does anyone have any further comments regarding what was discussed at the last meeting? </i>
                     </p>
-                    <p class="todo">
-                        ** Maybe an information/tip at this point to say for any new issues, or issues of substance
-                        from the previous meeting, these should be included as an agenda item and discussed later in
-                        the meeting.
+                    <p>
+                        Any new issues, or issues of substance from the previous meeting should be included as an agenda item
+                        and discussed later in the meeting.
+                    </p>
+                    <p>
+                        If there is no further discussion about the last meeting, leave this blank.
                     </p>
                 </article>
 
@@ -145,6 +151,19 @@
                     </p>
                 </article>
 
+                <article class="article help-group-agenda-item">
+                    <h2>Agenda Items</h2>
+                    
+                    <p>
+                        Give each agenda item a brief title and description.
+                    </p>
+                    <p>
+                        For each agenda item, make notes as to what is discussed. If any decisions are made
+                        where you wish to formally record, or your rules state that you should do so, record these
+                        decisions in a motion. 
+                    </p>
+                </article>
+
                 <!--Motions-->
                 <article class="article help-group-motion">
                     <h2>Motions</h2>
@@ -168,11 +187,11 @@
                     </p>
                 </article>
 
-                <article>
+                <!--<article>
                     <p id="general-help">
                         Need help? Click on any field to see additional information.
                     </p>
-                </article>
+                </article>-->
             </div>
         </div>
 
@@ -214,9 +233,14 @@
                         <div>
                             <span class="sublabel">did the motion pass</span>
                             <div class="yesno">
-                                <button class="btn-yes selected">yes</button>
+                                <button class="btn-yes">yes</button>
                                 <button class="btn-no">no</button>
                             </div>
+                        </div>
+
+                        <div class="apologies-motion-notes">
+                            <span class="sublabel">record any notes about this motion here</span>
+                            <textarea class="textarea apologies-motion-notes-text"></textarea>
                         </div>
                     </div>
                 </article>
@@ -234,7 +258,7 @@
 
                         <span class="sublabel">did the motion pass</span>
                         <div class="yesno">
-                            <button class="btn-yes selected">yes</button>
+                            <button class="btn-yes">yes</button>
                             <button class="btn-no">no</button>
                         </div>
 
@@ -278,7 +302,7 @@
                     </div>
                     <span class="sublabel">did the motion pass</span>
                     <div class="yesno">
-                        <button class="btn-yes selected">yes</button>
+                        <button class="btn-yes">yes</button>
                         <button class="btn-no">no</button>
                     </div>
 
@@ -311,8 +335,13 @@
 
                         <span class="sublabel">did the motion pass</span>
                         <div class="yesno">
-                            <button class="btn-yes selected">yes</button>
+                            <button class="btn-yes">yes</button>
                             <button class="btn-no">no</button>
+                        </div>
+
+                        <div class="financial-report-motion-notes">
+                            <span class="sublabel">record any notes about this motion here</span>
+                            <textarea class="textarea financial-report-motion-notes-text"></textarea>
                         </div>
                     </div>
 
@@ -322,8 +351,13 @@
 
                         <span class="sublabel">were the payments listed approved and the report accepted?</span>
                         <div class="yesno">
-                            <button class="btn-yes selected">yes</button>
+                            <button class="btn-yes">yes</button>
                             <button class="btn-no">no</button>
+                        </div>
+
+                        <div class="payments-motion-notes">
+                            <span class="sublabel">record any notes about this motion here</span>
+                            <textarea class="textarea payments-motion-notes-text"></textarea>
                         </div>
                     </div>
                 </article>
@@ -348,14 +382,19 @@
 
                         <span class="sublabel">was this report accepted?</span>
                         <div class="yesno">
-                            <button class="btn-yes selected">yes</button>
+                            <button class="btn-yes">yes</button>
                             <button class="btn-no">no</button>
+                        </div>
+
+                        <div class="other-decision-motion-notes">
+                            <span class="sublabel">record any notes about this motion here</span>
+                            <textarea class="textarea other-report-motion-notes-text"></textarea>
                         </div>
                     </div>
                 </article>
 
                 <article>
-                    <label>Now it's time to discuss any items from the agenda...</label>
+                    <label>Agenda Items...</label>
                 </article>
 
                 <div id="agenda-items">
@@ -363,7 +402,7 @@
                 </div>
 
                 <article>
-                    <label>Do you have any further agenda items?</label>
+                    <label>Do we have any further agenda items?</label>
                     <br />
                     <span class="sublabel inline">if so,</span> <button class="btn-add-agenda-item">add another agenda item</button>
                 </article>
@@ -392,8 +431,13 @@
 
                             <span class="sublabel">were these decisions accepted?</span>
                             <div class="yesno">
-                                <button class="btn-yes selected">yes</button>
+                                <button class="btn-yes">yes</button>
                                 <button class="btn-no">no</button>
+                            </div>
+
+                            <div class="other-decision-motion-notes">
+                                <span class="sublabel">record any notes about this motion here</span>
+                                <textarea class="textarea other-decision-motion-notes-text"></textarea>
                             </div>
                         </div>
                     </div>
@@ -426,32 +470,55 @@
         <!--Agenda item template-->
         <div style="display:none;">
             <article id="agenda-item-template" class="agenda-item">
-                <label>Agenda item no. x</label>
-                <span class="sublabel">describe the agenda item that was discussed</span>
-                <textarea class="textarea agenda-item-discussed-text"></textarea>
+                <label class="agenda-item-number">Agenda item no. </label>
 
-                <div class="agenda-item-decision">
-                    <span class="sublabel">describe your decision</span>
-                    <textarea class="textarea agenda-item-decision-text"></textarea>
+                <span class="sublabel">agenda item title</span>
+                <input class="input agenda-item-title" type="text" />
+
+                <span class="sublabel">describe the agenda item</span>
+                <textarea class="textarea agenda-item-description"></textarea>
+
+                <div class="agenda-item-discussion">
+                    <span class="sublabel">summarise your discussion about this agenda item</span>
+                    <textarea class="textarea agenda-item-discussion-text"></textarea>
                 </div>
 
-                <div class="agenda-item-motion">
-                    <span class="sublabel">who moves that this decision is accepted?</span>
-                    <div class="motion">
-                        <div class="mover">
-                            <span class="sublabel">moved by</span> 
-                            <input class="input names" type="text" value="" />
-                        </div>
-                        <div class="seconder">
-                            <span class="sublabel">seconded by</span> 
-                            <input class="input names" type="text" value="" />
-                        </div>
+                <label>Have we reached a decision about this agenda item?</label>
+                <div class="yesno agenda-item-decision-reached">
+                    <button class="btn-yes">yes</button>
+                    <button class="btn-no">no</button>
+                </div>
+
+                <div class="agenda-item-decision-reached-dependency">
+
+                    <div class="agenda-item-decision">
+                        <span class="sublabel">describe the decision that was reached</span>
+                        <textarea class="textarea agenda-item-decision-text"></textarea>
                     </div>
 
-                    <span class="sublabel">was this decision accepted?</span>
-                    <div class="yesno">
-                        <button class="btn-yes selected">yes</button>
-                        <button class="btn-no">no</button>
+                    <div class="agenda-item-motion">
+                        <!--<label>Who moves that this decision is accepted?</label>-->
+                        <div class="motion">
+                            <div class="mover">
+                                <span class="sublabel">moved by</span>
+                                <input class="input names" type="text" value="" />
+                            </div>
+                            <div class="seconder">
+                                <span class="sublabel">seconded by</span>
+                                <input class="input names" type="text" value="" />
+                            </div>
+                        </div>
+
+                        <span class="sublabel">was this decision accepted?</span>
+                        <div class="yesno">
+                            <button class="btn-yes">yes</button>
+                            <button class="btn-no">no</button>
+                        </div>
+
+                        <div class="agenda-item-motion-notes">
+                            <span class="sublabel">record any notes about this motion here</span>
+                            <textarea class="textarea agenda-item-motion-notes-text"></textarea>
+                        </div>
                     </div>
                 </div>
             </article>
