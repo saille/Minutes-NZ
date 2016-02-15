@@ -194,14 +194,14 @@ label{
     display:inline-block;
 }
 
-.chooser{
+/*.chooser{
     display:inline-block;
-}
+}*/
 
-.select-chooser{
+/*.select-chooser{
     display:none;
     min-width:20em;
-}
+}*/
 
 .motion{
     /*display:flex;
@@ -399,18 +399,63 @@ p{
 
 .big-quote::before{
     font-family: "FontAwesome";
-    font-size: 1.5em;
+    font-size: 1.3em;
     content: "\f10d";
 }
 
 .big-quote::after{
     font-family: "FontAwesome";
-    font-size: 1.5em;
+    font-size: 1.3em;
     content: "\f10e";
 }
 
 .big-quote{
     font-style:normal;
     color:hsl(206,89%,77%);
+    font-size: 1.1em;
 }
+
+table.basic-table {
+    /*border-spacing: 0.5em 1em;
+    border-collapse: separate;*/
+    width:100%;
+}
+
+table.basic-table td {
+    padding: 0 0.1em;
+}
+
+table.basic-table th, table.basic-table td {
+    font-weight:100;
+    font-size:1.5em;
+    text-align:left;
+}
+
+table.basic-table th span{
+    border-bottom: 1px solid black;
+}
+
+table.basic-table td .input:focus {
+    border-bottom:1px solid #555;
+}
+
+#expenses-table .input {
+    
+    font-size:1.0em;
+    border-bottom:1px solid black;
+    margin:0;
+}
+
+#expenses-table td.expense-date, #expenses-table td.expense-date .input{
+    width: 4.5em;
+}
+
+#expenses-table td.expense-cost, #expenses-table td.expense-cost .input{
+    width: 4.5em;
+}
+
+#expenses-table td.expense-desc, #expenses-table td.expense-desc .input{
+    width: 100%;
+}
+
 

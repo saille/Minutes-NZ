@@ -102,7 +102,7 @@
                 <article class="article help-group-previous-meeting">
                     <h2>Previous Meeting</h2>
                     <p>
-                        We record the date of the previous meeting because...
+                        Record the date here. It is needed for approving the minutes of that meeting (which you do next).
                     </p>
                 </article>
 
@@ -110,6 +110,9 @@
                     <h2>Are the Minutes of the Previous Meeting a True and Correct Record?</h2>
                     <p>
                         <i class="big-quote"> Who would like to move that we accept that the minutes of the previous meeting are an accurate record? </i>
+                    </p>
+                    <p>
+                        Note: Those that move and second the motion need to have been in attendance at the previous meeting.
                     </p>
                 </article>
 
@@ -122,6 +125,18 @@
                         Any new issues, or issues of substance from the previous meeting should be included as an agenda item
                         and discussed later in the meeting.
                     </p>
+                    <p>
+                        It is very easy to get side-tracked at this point in the meeting. The chairperson should give people
+                        the opportunity to comment on any matters in the minutes, however if the item requires further
+                        discussion, suggest that this is added to the agenda, and move on. Don't let these discussions
+                        hijack the meeting!
+                    </p>
+                    <p>
+                        <i class="big-quote">
+                            Can I suggest that we add this matter to the agenda and discuss this in more detail later in the
+                            meeting?
+                        </i>
+</p>
                     <p>
                         If there is no further discussion about the last meeting, leave this blank.
                     </p>
@@ -138,6 +153,16 @@
                     <h2>Financial Report</h2>
                     <p>
                         <i class="big-quote"> Is there a Financial Report being presented today? </i>
+                    </p>
+                </article>
+
+                <article class="article help-group-expenses">
+                    <h2>Expenses</h2>
+                    <p>
+                        <i class="big-quote"> Are there any expenses to record? </i>
+                    </p>
+                    <p>
+                        List any expenses incurred here. (todo: improve advice)
                     </p>
                 </article>
 
@@ -177,7 +202,7 @@
                         Motions usually start with "That....." for example "That the Club make an application to the Wonderful Charity for a donation of funds to assist with the purchase a gyrocopter"
                     </p>
                     <p>
-                        Do we have a seconder to this motion?
+                        <i class="big-quote"> Do we have a seconder to this motion? </i>
                     </p>
                     <p>
                         Is everyone in favour?
@@ -225,7 +250,7 @@
                     <label for="apologies-names">Are there any apologies?</label>
                     <span class="sublabel">list names</span>
                     <input id="apologies-names" class="input names" type="text" value="Craig, Mack" />
-                    <div class="motion">
+                    <!--<div class="motion">
                         
                         <div class="mover"><span class="sublabel">moved by</span> <input id="apologies-mover" class="input names" type="text" value="Ben" /></div>
                         <div class="seconder"><span class="sublabel">seconded by</span> <input id="apologies-seconder" class="input names" type="text" value="Jenine" /></div>
@@ -242,7 +267,7 @@
                             <span class="sublabel">record any notes about this motion here</span>
                             <textarea class="textarea apologies-motion-notes-text"></textarea>
                         </div>
-                    </div>
+                    </div>-->
                 </article>
 
                 <article id="previous-meeting">
@@ -262,19 +287,8 @@
                             <button class="btn-no">no</button>
                         </div>
 
-                        <div class="chooser-container">
-                            <span class="sublabel inline">if the motion was not passed, describe the reason</span>
-                            <div class="chooser">
-                                or <button class="btn-chooser">choose one</button>
-                                <select class="select-chooser">
-                                    <option selected></option>
-                                    <option>This motion was not passed as corrections are required to the previous minutes</option>
-                                    <option>This motion was not passed as </option>
-                                </select>
-                            </div>
-                            <br />
-                            <textarea id="previous-minutes-not-passed-reason" class="textarea"></textarea>
-                        </div>
+                        <span class="sublabel">record any notes about this motion here</span>
+                        <textarea id="previous-minutes-not-passed-reason" class="textarea"></textarea>
 
                     </div>
                 </article>
@@ -283,9 +297,6 @@
                     <label for="previous-minutes-matters-arising-text">Are there any matters arising from the previous minutes?</label>
                     <span class="sublabel">describe what was discussed</span>
                     <textarea class="textarea"></textarea>
-
-                    <span class="sublabel">list any decisions made</span>
-                    <textarea id="previous-minutes-matters-arising-text" class="textarea"></textarea>
                 </article>
 
                 <article id="correspondence">
@@ -299,25 +310,17 @@
                     <div class="motion">
                         <div class="mover"><span class="sublabel">moved by</span> <input id="correspondence-mover" class="input names" type="text" value="" /></div>
                         <div class="seconder"><span class="sublabel">seconded by</span> <input id="correspondence-seconder" class="input names" type="text" value="" /></div>
-                    </div>
-                    <span class="sublabel">did the motion pass</span>
-                    <div class="yesno">
-                        <button class="btn-yes">yes</button>
-                        <button class="btn-no">no</button>
-                    </div>
 
-                    <div class="chooser-container">
-                        <span class="sublabel inline">if the motion was not passed, describe the reason</span>
-                        <div class="chooser">
-                            or <button class="btn-chooser">choose one</button>
-                            <select class="select-chooser">
-                                <option selected></option>
-                                <option>This motion was not passed as </option>
-                            </select>
+                        <span class="sublabel">did the motion pass</span>
+                        <div class="yesno">
+                            <button class="btn-yes">yes</button>
+                            <button class="btn-no">no</button>
                         </div>
-                        <br />
+
+                        <span class="sublabel">record any notes about this motion here</span>
                         <textarea id="correspondence-motion-not-passed-reason" class="textarea"></textarea>
                     </div>
+                    
                 </div>
 
                 <article id="financial-report">
@@ -339,13 +342,13 @@
                             <button class="btn-no">no</button>
                         </div>
 
-                        <div class="financial-report-motion-notes">
+                        <div>
                             <span class="sublabel">record any notes about this motion here</span>
-                            <textarea class="textarea financial-report-motion-notes-text"></textarea>
+                            <textarea class="textarea"></textarea>
                         </div>
                     </div>
 
-                    <div id="financial-report-dependency">
+                    <!--<div id="financial-report-dependency">
                         <span class="sublabel">list any payments that require approval</span>
                         <textarea id="financial-report-payments-for-approval" class="textarea"></textarea>
 
@@ -358,6 +361,56 @@
                         <div class="payments-motion-notes">
                             <span class="sublabel">record any notes about this motion here</span>
                             <textarea class="textarea payments-motion-notes-text"></textarea>
+                        </div>
+                    </div>-->
+
+                </article>
+
+                <article id="expenses">
+                    <label>Are there any expenses to record?</label>
+
+                    <div id="expenses-yes-no" class="yesno">
+                        <button class="btn-yes">yes</button>
+                        <button class="btn-no">no</button>
+                    </div>
+
+                    <div id="expenses-dependency">
+                        <span class="sublabel">list any expenses incurred since the last meeting</span>
+                        <table id="expenses-table" class="basic-table">
+                            <thead>
+                                <tr>
+                                    <th><span>Date</span></th>
+                                    <th><span>Cost</span></th>
+                                    <th><span>Description</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+
+                        <div class="expenses-motion">
+                            <label>Who moves that these expenses are accepted?</label>
+                            <div class="motion">
+                                <div class="mover">
+                                    <span class="sublabel">moved by</span>
+                                    <input class="input names" type="text" value="" />
+                                </div>
+                                <div class="seconder">
+                                    <span class="sublabel">seconded by</span>
+                                    <input class="input names" type="text" value="" />
+                                </div>
+
+                                <span class="sublabel">was this decision accepted?</span>
+                                <div class="yesno">
+                                    <button class="btn-yes">yes</button>
+                                    <button class="btn-no">no</button>
+                                </div>
+
+                                <div class="expenses-motion-notes">
+                                    <span class="sublabel">record any notes about this motion here</span>
+                                    <textarea class="textarea expenses-motion-notes-text"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -378,17 +431,17 @@
                                 <span class="sublabel">seconded by</span>
                                 <input id="other-report-seconder" class="input names" type="text" value="" />
                             </div>
-                        </div>
 
-                        <span class="sublabel">was this report accepted?</span>
-                        <div class="yesno">
-                            <button class="btn-yes">yes</button>
-                            <button class="btn-no">no</button>
-                        </div>
+                            <span class="sublabel">was this report accepted?</span>
+                            <div class="yesno">
+                                <button class="btn-yes">yes</button>
+                                <button class="btn-no">no</button>
+                            </div>
 
-                        <div class="other-decision-motion-notes">
-                            <span class="sublabel">record any notes about this motion here</span>
-                            <textarea class="textarea other-report-motion-notes-text"></textarea>
+                            <div class="other-decision-motion-notes">
+                                <span class="sublabel">record any notes about this motion here</span>
+                                <textarea class="textarea other-report-motion-notes-text"></textarea>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -427,17 +480,17 @@
                                     <span class="sublabel">seconded by</span>
                                     <input class="input names" type="text" value="" />
                                 </div>
-                            </div>
 
-                            <span class="sublabel">were these decisions accepted?</span>
-                            <div class="yesno">
-                                <button class="btn-yes">yes</button>
-                                <button class="btn-no">no</button>
-                            </div>
+                                <span class="sublabel">were these decisions accepted?</span>
+                                <div class="yesno">
+                                    <button class="btn-yes">yes</button>
+                                    <button class="btn-no">no</button>
+                                </div>
 
-                            <div class="other-decision-motion-notes">
-                                <span class="sublabel">record any notes about this motion here</span>
-                                <textarea class="textarea other-decision-motion-notes-text"></textarea>
+                                <div class="other-decision-motion-notes">
+                                    <span class="sublabel">record any notes about this motion here</span>
+                                    <textarea class="textarea other-decision-motion-notes-text"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -466,6 +519,19 @@
             </div>
 
         </section>
+
+        <!--Expense item template-->
+        <div style="display:none;">
+            <table id="expenses-table-template" class="basic-table">
+                <tbody>
+                    <tr>
+                        <td class="expense-date"><input type="text" class="input" value="" /></td>
+                        <td class="expense-cost"><input type="text" class="input" value="" /></td>
+                        <td class="expense-desc"><input type="text" class="input" value="" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <!--Agenda item template-->
         <div style="display:none;">
@@ -507,22 +573,24 @@
                                 <span class="sublabel">seconded by</span>
                                 <input class="input names" type="text" value="" />
                             </div>
-                        </div>
 
-                        <span class="sublabel">was this decision accepted?</span>
-                        <div class="yesno">
-                            <button class="btn-yes">yes</button>
-                            <button class="btn-no">no</button>
-                        </div>
+                            <span class="sublabel">was this decision accepted?</span>
+                            <div class="yesno">
+                                <button class="btn-yes">yes</button>
+                                <button class="btn-no">no</button>
+                            </div>
 
-                        <div class="agenda-item-motion-notes">
-                            <span class="sublabel">record any notes about this motion here</span>
-                            <textarea class="textarea agenda-item-motion-notes-text"></textarea>
+                            <div class="agenda-item-motion-notes">
+                                <span class="sublabel">record any notes about this motion here</span>
+                                <textarea class="textarea agenda-item-motion-notes-text"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
             </article>
         </div>
+
+        
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
